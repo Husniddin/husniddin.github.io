@@ -4,10 +4,11 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'> -->
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/editor.css" />
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,6 +31,28 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
+
+          <div id="editor">
+function foo(items) {
+  var x = "All this is syntax highlighted";
+  return x;
+}
+          </div>
+          <p id="getV" >get Value</p>
+          <script src="javascripts/ace/src/ace.js" type="text/javascript" charset="utf-8"></script>
+          <script src="javascripts/ace/src/theme-monokai.js" type="text/javascript" charset="utf-8"></script>
+          <script src="javascripts/ace/src/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
+          <script>
+              var editor = ace.edit("editor");
+              editor.setTheme("ace/theme/monokai");
+              var JavaScriptMode = require("ace/mode/javascript").Mode;
+              editor.getSession().setMode(new JavaScriptMode());
+              // editor.getSession().setValue("function sayHello() { \n alert('hello World');\n}");
+              document.getElementById('getV').addEventListener('click', function () {
+                alert(editor.getSession().getValue());
+              })
+          </script>
+
           <h3>
 <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
